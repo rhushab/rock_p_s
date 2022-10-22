@@ -67,8 +67,16 @@ function playRound(playerSelection, computerSelection) {
   }
 }
 
-var rockbtn = document.getElementById('rockButton');
-rockbtn.addEventListener('click', () => {
+function reset() {
+  console.log('into reset');
+  document.getElementById('result').innerText = 'Result : ';
+  document.getElementById('finScore').innerText = 'Final Score : ';
+  p = 0;
+  c = 0;
+  gamesPlayed = 0;
+}
+
+document.getElementById('rockButton').addEventListener('click', () => {
   playRound('rock', computerChoice());
 });
 document.getElementById('paperButton').addEventListener('click', () => {
@@ -76,4 +84,7 @@ document.getElementById('paperButton').addEventListener('click', () => {
 });
 document.getElementById('scissorsButton').addEventListener('click', () => {
   playRound('scissors', computerChoice());
+});
+document.getElementById('reset').addEventListener('click', () => {
+  reset();
 });
