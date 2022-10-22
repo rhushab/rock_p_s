@@ -13,7 +13,8 @@ function playerChoice() {
 
 var c = 0;
 var p = 0;
-
+var gamesPlayed = 0;
+//plays the actual game
 function playRound(playerSelection, computerSelection) {
   if (playerSelection == computerSelection) {
     console.log("it's a draw, both get 1 points each");
@@ -44,23 +45,35 @@ function playRound(playerSelection, computerSelection) {
     console.log('player selection wins');
     p++;
   }
+  gamesPlayed++;
+  if (gamesPlayed == 5) {
+    console.log('player score is ', p, 'and computer score is ', c);
+    document.getElementById('finScore').innerText =
+      'player score is : ' + p + ' and computer score is : ' + c;
+    if (p > c) {
+      console.log('Player wins!');
+      document.getElementById('result').innerText = 'Player wins!';
+
+      if (c > p) {
+        console.log('Computer wins!');
+        document.getElementById('result').innerText = 'Computer wins!';
+      }
+      if (c == p) {
+        console.log("It's a draw!");
+        document.getElementById('result').innerText = "It's a draw!";
+      }
+      gamesPlayed = 0;
+    }
+  }
 }
 
-function game() {
-  for (let i = 0; i < 5; i++) {
-    let computerSelection = computerChoice();
-    let playerSelection = playerChoice();
-    playRound(computerSelection, playerSelection);
-  }
-  console.log('player score is ', p, 'and computer score is ', c);
-  if (p > c) {
-    console.log('Player wins!');
-  }
-  if (c > p) {
-    console.log('Computer wins!');
-  }
-  if (c == p) {
-    console.log("It's a draw!");
-  }
-}
-game();
+var rockbtn = document.getElementById('rockButton');
+rockbtn.addEventListener('click', () => {
+  playRound('rock', computerChoice());
+});
+document.getElementById('paperButton').addEventListener('click', () => {
+  playRound('paper', computerChoice());
+});
+document.getElementById('scissorsButton').addEventListener('click', () => {
+  playRound('scissors', computerChoice());
+});
