@@ -48,6 +48,15 @@ function game() {
     let playerSelection = computerChoice();
     playRound(computerSelection, playerSelection);
   }
+  console.log('player score is ', p, 'and computer score is ', c);
+  if (p > c) {
+    console.log('Player wins!');
+  }
+  if (c > p) {
+    console.log('Computer wins!');
+  }
+  if (c == p) {
+    console.log("It's a draw!");
+  }
 }
 game();
-console.log('player score is ', p, 'and computer score is ', c);
