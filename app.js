@@ -4,8 +4,12 @@ function computerChoice() {
   if (choice == 2) return 'paper';
   if (choice == 3) return 'scissors';
 }
-let computerSelection = computerChoice();
-let playerSelection = computerChoice();
+
+function playerChoice() {
+  let a = prompt('Please enter a choice');
+  let res = a.toLowerCase();
+  return res;
+}
 
 var c = 0;
 var p = 0;
@@ -45,7 +49,7 @@ function playRound(playerSelection, computerSelection) {
 function game() {
   for (let i = 0; i < 5; i++) {
     let computerSelection = computerChoice();
-    let playerSelection = computerChoice();
+    let playerSelection = playerChoice();
     playRound(computerSelection, playerSelection);
   }
   console.log('player score is ', p, 'and computer score is ', c);
